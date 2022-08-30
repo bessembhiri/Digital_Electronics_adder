@@ -1,0 +1,33 @@
+USER SYMBOL by DSCH 3.5
+DATE 30/08/2022 09:31:22
+SYM  #adder
+BB(0,0,40,40)
+TITLE 10 -7  #
+MODEL 6000
+REC(5,5,30,30)
+PIN(0,10,0.00,0.00)C
+PIN(0,30,0.00,0.00)A
+PIN(0,20,0.00,0.00)B
+PIN(40,20,2.00,1.00)Carry
+PIN(40,10,2.00,1.00)SUM
+LIG(0,10,5,10)
+LIG(0,30,5,30)
+LIG(0,20,5,20)
+LIG(35,20,40,20)
+LIG(35,10,40,10)
+LIG(5,5,5,35)
+LIG(5,5,35,5)
+LIG(35,5,35,35)
+LIG(35,35,5,35)
+VLG module adder( C,A,B,Carry,SUM);
+VLG  input C,A,B;
+VLG  output Carry,SUM;
+VLG  wire w4,w6,w7,w10;
+VLG  nand #(2) nand2_1(w4,C,B);
+VLG  nand #(2) nand2_2(w6,C,A);
+VLG  nand #(2) nand2_3(w7,B,A);
+VLG  nand #(2) nand3_4(Carry,w7,w6,w4);
+VLG  xor #(2) xor2_5(SUM,w10,C);
+VLG  xor #(2) xor2_6(w10,A,B);
+VLG endmodule
+FSYM
